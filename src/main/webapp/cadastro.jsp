@@ -57,8 +57,15 @@
                         -->
                               
                             <!-- SEM JAVASCRIPT -->
-                            <a ><button style=" width: 80px; height: 40px;" href = "index.jsp" name="novoCadastro" type="submit">Enviar</button></a>
+                            <a ><button style=" width: 80px; height: 40px;" href = "index.jsp" name="novoCadastro" type="submit">Enviar</button></a> <br><br>  
                                                      
+                            
+                            <% String mensagem = (String) request.getAttribute("mensagem"); %>
+							<% if (mensagem != null && !mensagem.isEmpty()) { %>
+							  <div class="alert alert-danger">
+							    <%= mensagem %>
+							  </div>
+							<% } %>                 
                             
                             </div>
                         </div>

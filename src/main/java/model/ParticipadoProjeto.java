@@ -4,11 +4,11 @@ public class ParticipadoProjeto {
     private int id;
     private String nome;
     private int numProjeto;
-    private Aluno aluno;
+    private Usuario aluno;
     private boolean homologado;
     private boolean ativo;
 
-    public ParticipadoProjeto(int id, String nome, int numProjeto, Aluno aluno, boolean homologado, boolean ativo) {
+    public ParticipadoProjeto(int id, String nome, int numProjeto, Usuario aluno, boolean homologado, boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.numProjeto = numProjeto;
@@ -17,7 +17,11 @@ public class ParticipadoProjeto {
         this.ativo = ativo;
     }
 
-    public int getId() {
+    public ParticipadoProjeto() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -41,11 +45,11 @@ public class ParticipadoProjeto {
         this.numProjeto = numProjeto;
     }
 
-    public Aluno getAluno() {
+    public Usuario getAluno() {
         return aluno;
     }
 
-    public void setAluno(Aluno aluno) {
+    public void setAluno(Usuario aluno) {
         this.aluno = aluno;
     }
 

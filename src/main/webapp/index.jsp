@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%
+
+String usuario = (String) session.getAttribute("usuario");
+
+if (session.isNew()) {
+	 response.sendRedirect("a.jsp");
+}
+
+if (usuario != null) {
+    response.sendRedirect("PrincipalAluno.jsp");
+} else {
+%>
+    <!-- aqui vai o conteúdo da página index.jsp caso o usuário não esteja logado -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,3 +65,7 @@
         </div>
     </body>
 </html>
+
+<%
+}
+%>

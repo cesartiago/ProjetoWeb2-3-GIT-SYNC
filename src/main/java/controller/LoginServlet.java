@@ -48,9 +48,20 @@ public class LoginServlet extends HttpServlet {
         System.out.println("\n Vc digitou " + nome + " e senha = " + senha);
         
         
-        //session
+        // Obtém a sessão do usuário, 
         HttpSession session = request.getSession();
+        /* Só "relembrando":
+         * A sessão é uma maneira de manter os dados do usuário ativos durante sua navegação pelo site. Sem a sessão, o site precisaria recriar esses dados toda vez que o usuário navegar para outra página
+         * Ao iniciar uma sessão, o site cria um espaço de memória no servidor que é atribuído ao usuário e que armazena as informações relevantes do usuário
+         * Portanto, é necessário obter a sessão do usuário para poder acessar essas informações e utilizá-las em outras partes do site. Por exemplo, se o usuário está logado, é possível acessar seus dados de perfil e exibi-los em uma página de perfil. Se o usuário não estiver logado, é possível redirecioná-lo para a página de login.
+         */ 
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuario");
         //List<Usuario> usuarios = (List<Usuario>) session.getAttribute("usuarios");
+        if (usuarioLogado != null) {
+            // Usuário já está logado, redireciona para a página PrincipalAluno.jsp
+            response.sendRedirect("PrincipalAluno.jsp");
+            return;
+        }
         
         
         if ( (List<Usuario>) getServletContext().getAttribute("usuarios") != null ) {
@@ -83,6 +94,8 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (loginValido) {
+        	// Define a sessão do usuário
+            session.setAttribute("usuario", usuarioLogado);
             response.sendRedirect("PrincipalAluno.jsp");
         } else {
             request.setAttribute("mensagem", "Usuário ou senha inválido");

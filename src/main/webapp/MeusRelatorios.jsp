@@ -44,34 +44,30 @@
 
             ?>
  
-                <form action="ProcessaRelatorioServlet" method="post" class="form2">
-                <div>
-			        <label for="nome">Nome:</label>
-			        <input type="text" id="nome" name="nome" required/>
-			   	</div>
-			    <div>
-			        <label for="id">id:</label>
-			        <input type="number" id="id" name="id" required />
-			    </div>
-			    <div>
-			        <label for="numeroDoProjeto"> Nº do projeto:</label>
-			        <input type="number" id="numeroDoProjeto" name="numeroDoProjeto" required />
-			    </div>
-			    <div>	
-			    	<label for = "homologado"> Homologado? </label>		    	
-				    <input type = "checkbox" id = "homologado" name = "homologado" value = "homologado">
-				    	        
-			        
-			    </div>                    
-                    <div><input class="butao" type="submit" value="Enviar" name="botao_relatorio"></div>
-				   <!-- mensagem vinda de LoginServlet, falando login inválido. O valor/texto da msg tá escrito lá no servlet -->
-                   <% String mensagem = (String) request.getAttribute("mensagem"); %>
-				<% if (mensagem != null && !mensagem.isEmpty()) { %>
-				  <div class="alert alert-danger">
-				    <%= mensagem %>
-				  </div>
-				<% } %>
-                </form>
+                <table>
+				  <thead>
+				    <tr>
+				      <th>Nome</th>
+				      <th>ID</th>
+				      <th>Número do Projeto</th>
+				      <th>Aluno</th>
+				      <th>Homologado</th>
+				      <th>Ativo</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <c:forEach items="${participacoes}" var="participacao">
+				      <tr>
+				        <td>${participacao.nome}</td>
+				        <td>${participacao.id}</td>
+				        <td>${participacao.numProjeto}</td>
+				        <td>${participacao.aluno}</td>
+				        <td>${participacao.homologado}</td>
+				        <td>${participacao.ativo}</td>
+				      </tr>
+				    </c:forEach>
+				  </tbody>
+				</table>
              
            
             <!--Logo-->
