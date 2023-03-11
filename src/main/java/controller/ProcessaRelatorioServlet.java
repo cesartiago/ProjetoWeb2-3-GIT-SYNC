@@ -65,7 +65,7 @@ public class ProcessaRelatorioServlet extends HttpServlet {
         participacao.setNome(nome);
         participacao.setId(id);
         participacao.setNumProjeto(numeroDoProjeto);
-        participacao.setAluno(usuarioLogado); // Aqui EU defino o aluno correspondente à participação
+        participacao.setAluno(usuarioLogado.getId()); // Aqui EU defino o aluno correspondente à participação
         participacao.setHomologado(homologado);
         participacao.setAtivo(true); // Por padrão, consideramos a participação ativa
         

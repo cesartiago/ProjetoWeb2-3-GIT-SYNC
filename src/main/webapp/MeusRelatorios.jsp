@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ page import="model.*" %>
+
+<%@ page import="java.util.List" %>
+<%@ page import= "java.util.ArrayList"%>
+<%@ page import= "java.util.Iterator" %>
+    
+ <%
+ //MÓ SACANGEM, NEM AVISA QUE TEM QUE IMPORTAR arraylist haha.
+ 
+/*List<ParticipadoProjeto> participacoes = (List<ParticipadoProjeto>) request.getAttribute("participacoes");*/
+
+ //Pra testes (roda):
+  List<ParticipadoProjeto> participacoes = new ArrayList<>();
+  participacoes.add(new ParticipadoProjeto(0, "NULA", 0, 1, false, true));
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +51,7 @@
         <div class="Formulario">
 
             <h1 class="title1">Projeto 1</h1>
-            <h1 class="title2">Enviar relatório</h1>
+            <h1 class="title2">Meus relatório</h1>
             <?php
                 if(isset($_SESSION['msg'])){
                     echo $_SESSION['msg'];
@@ -56,16 +73,12 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <c:forEach items="${participacoes}" var="participacao">
+				    <% for (ParticipadoProjeto participacao : participacoes) { %>
 				      <tr>
-				        <td>${participacao.nome}</td>
-				        <td>${participacao.id}</td>
-				        <td>${participacao.numProjeto}</td>
-				        <td>${participacao.aluno}</td>
-				        <td>${participacao.homologado}</td>
-				        <td>${participacao.ativo}</td>
+				        <td><%= participacao.getNome() %></td>
+				        
 				      </tr>
-				    </c:forEach>
+				    <% } %>
 				  </tbody>
 				</table>
              

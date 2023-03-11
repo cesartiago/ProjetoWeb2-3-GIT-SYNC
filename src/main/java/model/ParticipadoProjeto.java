@@ -4,11 +4,11 @@ public class ParticipadoProjeto {
     private int id;
     private String nome;
     private int numProjeto;
-    private Usuario aluno;
+    private int aluno;
     private boolean homologado;
     private boolean ativo;
 
-    public ParticipadoProjeto(int id, String nome, int numProjeto, Usuario aluno, boolean homologado, boolean ativo) {
+    public ParticipadoProjeto(int id, String nome, int numProjeto, int aluno, boolean homologado, boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.numProjeto = numProjeto;
@@ -45,11 +45,11 @@ public class ParticipadoProjeto {
         this.numProjeto = numProjeto;
     }
 
-    public Usuario getAluno() {
+    public int getAluno() {
         return aluno;
     }
 
-    public void setAluno(Usuario aluno) {
+    public void setAluno(int aluno) {
         this.aluno = aluno;
     }
 

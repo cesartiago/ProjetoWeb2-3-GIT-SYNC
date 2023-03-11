@@ -51,15 +51,11 @@ public class AppContextListener implements ServletContextListener {
          // TODO Auto-generated method stub
     	
     	 {
-    		 	//Pega o contexto
-    	        ServletContext context = sce.getServletContext();
-
-    	        // Cria a lista de participações de projeto
-    	        List<ParticipadoProjeto> participacoes = new ArrayList<>();
-
-    	        // Adiciona a lista no contexto da aplicação
-    	        context.setAttribute("participacoes", participacoes);
-    	        
+    		 		       
+    	           	        
+	    		//Pega o contexto
+	 	        ServletContext context = sce.getServletContext();
+    	        //O mesmo para a LISTA de Usuarios e para a LISTA DE PARTICIPACOES
     	        
     	        List<Usuario> usuarios;
     	        usuarios = new ArrayList<Usuario>();
@@ -71,6 +67,19 @@ public class AppContextListener implements ServletContextListener {
     	        
     	        context.setAttribute("usuarios", usuarios);  
     	        //^ Torna disponível pra toda app web
+    	        
+    	      
+
+    	        // Cria a lista de participações de projeto
+    	        List<ParticipadoProjeto> participacoes;
+    	        participacoes = new ArrayList<ParticipadoProjeto>();
+    	        System.out.println("parte da lista de projetos ok");
+    	        participacoes.add(new ParticipadoProjeto(0, "NULA", 0, 1, false, true));
+    	   
+    	        
+
+    	        // Adiciona a lista no contexto da aplicação
+    	        context.setAttribute("participacoes", participacoes);
     		           	          	        
     	            	     	        
     	        System.out.println("AppContextListener executado com sucesso!");
