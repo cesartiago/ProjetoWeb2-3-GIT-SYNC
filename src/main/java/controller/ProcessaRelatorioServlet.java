@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import model.Aluno;
 import model.ParticipadoProjeto;
@@ -43,8 +43,12 @@ public class ProcessaRelatorioServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
+		// Obtém a sessão do usuário, 
+        HttpSession session = request.getSession();
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuario");
+		
 		//Para passar aluno, criei um. Ñ consegui por session ainda
-		Usuario aluno = new Aluno("nome","senha");
+		//Usuario aluno = new Aluno("nome","senha");
 		
 
 		
@@ -54,13 +58,14 @@ public class ProcessaRelatorioServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         int numeroDoProjeto = Integer.parseInt(request.getParameter("numeroDoProjeto"));
         boolean homologado = request.getParameter("homologado") != null;
+        
 
         // Cria uma instância de ParticipadoProjeto
         ParticipadoProjeto participacao = new ParticipadoProjeto();
         participacao.setNome(nome);
         participacao.setId(id);
         participacao.setNumProjeto(numeroDoProjeto);
-        participacao.setAluno(aluno); // Aqui EU defino o aluno correspondente à participação
+        participacao.setAluno(usuarioLogado); // Aqui EU defino o aluno correspondente à participação
         participacao.setHomologado(homologado);
         participacao.setAtivo(true); // Por padrão, consideramos a participação ativa
         

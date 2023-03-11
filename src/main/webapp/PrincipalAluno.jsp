@@ -109,6 +109,7 @@ if (usuario == null) {
         </div>
         <form action="LogoutServlet" method="post">
     	<button style=" width: 80px; height: 40px;" href = "index.jsp" name="novoCadastro" type="submit">Logout</button>
+    	<!-- BOTÃO NOVO DE LOGOUT -->
 	</form>
         
     </div>

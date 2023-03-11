@@ -7,12 +7,15 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import model.Aluno;
+
 /**
  * Application Lifecycle Listener implementation class AppContextListener
  *
  */
 
 import model.ParticipadoProjeto;
+import model.Usuario;
 
 
 /*NECESSÁRIO PRA JA SE INICAR UMA LISTA QUANDO A APLICAÇÃO INICIAR.
@@ -25,6 +28,7 @@ import model.ParticipadoProjeto;
  
  /*Isso resolveria o problema de ter um aluno*/
 public class AppContextListener implements ServletContextListener {
+	
 
     /**
      * Default constructor. 
@@ -56,6 +60,19 @@ public class AppContextListener implements ServletContextListener {
     	        // Adiciona a lista no contexto da aplicação
     	        context.setAttribute("participacoes", participacoes);
     	        
+    	        
+    	        List<Usuario> usuarios;
+    	        usuarios = new ArrayList<Usuario>();
+    	        System.out.println("Rodei essa parte");
+    	        usuarios.add(new Aluno ("a", "123") );
+    	        
+    	        usuarios.add(new Aluno ("João", "1234") );
+    	        usuarios.add(new Aluno ("Maria", "5678") );
+    	        
+    	        context.setAttribute("usuarios", usuarios);  
+    	        //^ Torna disponível pra toda app web
+    		           	          	        
+    	            	     	        
     	        System.out.println("AppContextListener executado com sucesso!");
     	    }
     }

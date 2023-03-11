@@ -29,20 +29,31 @@ public class CadastrarUsuarioServelet extends HttpServlet {
 	        instância de ArrayList
 	        */
 	        usuarios = new ArrayList<Usuario>();
-	       
-	        
-	        System.out.println("Rodei essa parte");
-	        
+	        if ( (List<Usuario>) getServletContext().getAttribute("usuarios") != null ) {
+	            
+	            
+	            usuarios = (List<Usuario>) getServletContext().getAttribute("usuarios");
+	            /*O método getServletContext().getAttribute("usuarios") retorna um objeto genérico do tipo Object, então é necessário fazer um cast
+	             * explícito para o tipo List<Usuario> para que você possa acessar e iterar sobre os objetos Usuario armazenados na lista.
+	             * Sem o cast, o compilador pode gerar um erro de compilação porque ele não sabe qual tipo de objeto está sendo
+	             * retornado pelo método getAttribute().*/
+	            
+	            
+	            
+	    		System.out.println("Lista de usuarios pega do contexto");
+	            }
+	       	        
+	       	        
 	     // Inicializa a lista de usuários no escopo de aplicação
+	        //usuarios.add(new Aluno ("João", "1234") );
+	        //usuarios.add(new Aluno ("Maria", "5678") );
+	        //getServletContext().setAttribute("usuarios", usuarios);
+	        //^ Torna disponível pra toda app web
 	        
-	        usuarios.add(new Aluno ("João", "1234") );
-	        usuarios.add(new Aluno ("Maria", "5678") );
-	        getServletContext().setAttribute("usuarios", usuarios);
-	      //^ Torna disponível pra toda app web
 	        System.out.println("Rodei essa parte");
 	        
 	        for (Usuario usuario : usuarios) {
-                // Faz alguma coisa com cada objeto Usuario da lista
+                // ^ Faça "alguma coisa" com cada objeto Usuario da lista
                 System.out.println(usuario.getNome() + " senha= " + usuario.getSenha());
                 
             //ISSO É SÓ NA INICIALIZAÇÃO DO SERVICE    
