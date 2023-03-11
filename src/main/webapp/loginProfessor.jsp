@@ -48,7 +48,7 @@ if (usuario != null) {
                 </div>
             </div>
            
-            <form action="LoginServlet" method="POST">
+            <form action="LoginProfessorServlet" method="POST">
                 <div class="fora_login">
                     <div class="loginform">  
                     
@@ -68,9 +68,9 @@ if (usuario != null) {
                         <br></br>
                         <button>Entrar</button>
                         <br></br>
-                        <button><a href="cadastro.jsp" style="text-decoration:none; color:black">Criar nova conta</a></button>
                         
-                        <button><a href="loginProfessor.jsp" style="text-decoration:none; color:black">Sou Professor</a></button>
+                        
+                        <button><a href="index.jsp" style="text-decoration:none; color:black">Sou Aluno</a></button>
                     </div>  
                 </div>
             </form>

@@ -8,6 +8,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import model.Aluno;
+import model.Coordenador;
 
 /**
  * Application Lifecycle Listener implementation class AppContextListener
@@ -60,10 +61,12 @@ public class AppContextListener implements ServletContextListener {
     	        List<Usuario> usuarios;
     	        usuarios = new ArrayList<Usuario>();
     	        System.out.println("Rodei essa parte");
-    	        usuarios.add(new Aluno ("a", "123") );
+    	        usuarios.add(new Aluno (0,"a", "123") );
     	        
-    	        usuarios.add(new Aluno ("João", "1234") );
-    	        usuarios.add(new Aluno ("Maria", "5678") );
+    	        usuarios.add(new Aluno (1,"João", "1234") );
+    	        usuarios.add(new Aluno (2,"Maria", "5678") );
+    	        
+    	        usuarios.add(new Coordenador (4,"prof", "123", null, "prof", null, "professor") );
     	        
     	        context.setAttribute("usuarios", usuarios);  
     	        //^ Torna disponível pra toda app web
@@ -74,7 +77,7 @@ public class AppContextListener implements ServletContextListener {
     	        List<ParticipadoProjeto> participacoes;
     	        participacoes = new ArrayList<ParticipadoProjeto>();
     	        System.out.println("parte da lista de projetos ok");
-    	        participacoes.add(new ParticipadoProjeto(0, "VEIO DO LIST-INITI", 0, 1, false, true));
+    	        participacoes.add(new ParticipadoProjeto(0, "VEIO DO LIST-INITI", 0, 0, false, true));
     	   
     	        
 

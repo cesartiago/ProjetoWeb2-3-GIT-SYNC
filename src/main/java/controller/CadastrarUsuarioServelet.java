@@ -106,20 +106,32 @@ public class CadastrarUsuarioServelet extends HttpServlet {
             request.setAttribute("mensagem", "Nome de usuário já registrado. Tente outro nome.");
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         } else {
+            
+            //VER PROXIMO ID DISPONIVEL
+            int proximoId = 0; //Comeca no id "ZERO" já cadastrado. 
+            //CADASTREI ATÉ O ID = 3.
+
+            for (Usuario i : usuarios) {
+                {
+                   proximoId ++;
+                }
+            }
+            
             // Cria um novo objeto Aluno e adiciona à lista de usuários
-            Aluno aluno = new Aluno(nome, senha);
+            Aluno aluno = new Aluno(proximoId, nome, senha);
             usuarios.add(aluno);
-            System.out.println("usuario adicionou nome:" + nome + "senha:" + senha);
+            
+            System.out.println("usuario adicionou nome:" + nome + "senha:" + senha + "e id= " + proximoId);
             
             if (!usuarios.isEmpty()) {
-                System.out.println("usuarios está vazio");
+                System.out.println("usuarios NÃO está vazio");
                 }
             
             
            
             for (Usuario usuario : usuarios) {
                 // Faz alguma coisa com cada objeto Usuario da lista
-                System.out.println("Todos 1p1 nome =" + usuario.getNome()+ " senha= " + usuario.getSenha());
+                System.out.println("Todos 1p1 nome =" + usuario.getNome()+ " senha= " + usuario.getSenha() + "ID = " + usuario.getId());
             }
             
             response.sendRedirect("index.jsp");

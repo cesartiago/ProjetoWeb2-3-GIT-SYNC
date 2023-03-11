@@ -52,6 +52,12 @@
   	<description></description>
   	<servlet-class>controller.LogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>LoginProfessorServlet</servlet-name>
+  	<display-name>LoginProfessorServlet</display-name>
+  	<description></description>
+  	<servlet-class>controller.LoginProfessorServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>CadastrarUsuarioServelet</servlet-name>
   	<url-pattern>/CadastrarUsuarioServelet</url-pattern>
@@ -79,6 +85,10 @@
   <servlet-mapping>
   	<servlet-name>LogoutServlet</servlet-name>
   	<url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginProfessorServlet</servlet-name>
+  	<url-pattern>/LoginProfessorServlet</url-pattern>
   </servlet-mapping>
   
     <welcome-file-list>

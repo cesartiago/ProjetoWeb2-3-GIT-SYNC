@@ -25,6 +25,14 @@ public class Usuario {
     	this.nome= nome2;
     	this.senha= senha2;
 	}
+    
+    //USO ESSE CONSTRUTOR
+    public Usuario(int id3, String nome3, String senha3) {
+		// TODO Auto-generated constructor stub
+    	this.id= id3;
+    	this.nome= nome3;
+    	this.senha= senha3;
+	}
 
 	// getters e setters
     public int getId() {

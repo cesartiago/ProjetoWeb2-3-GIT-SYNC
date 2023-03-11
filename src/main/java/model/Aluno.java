@@ -9,9 +9,9 @@ public class Aluno extends Usuario {
 Isso permite que a classe Aluno tenha todos esses atributos herdados da classe Usuario e que possam ser acessados através dos getters e setters correspondentes.*/
     }
 
-	public Aluno(String nome, String senha) {
+	public Aluno(int id, String nome, String senha) {
 		// TODO Auto-generated constructor stub
 		//mais simples
-		super(nome, senha);
+		super(id,nome, senha);
 	}
 }

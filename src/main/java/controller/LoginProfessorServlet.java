@@ -16,7 +16,7 @@ import model.Usuario;
 /**
  * Servlet implementation class LoginServlet
  */
-public class LoginServlet extends HttpServlet {
+public class LoginProfessorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Usuario> usuarios;
 	
@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public LoginProfessorServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -87,9 +87,14 @@ public class LoginServlet extends HttpServlet {
             for (Usuario usuario : usuarios) {
             	System.out.println(" -  NO LOGINservlet tem id = " + usuario.getId() + " nm=" + usuario.getNome()+ " senha= " + usuario.getSenha());
                 if (usuario.getNome().equals(nome) && usuario.getSenha().equals(senha)) {
+                	
+                	if (usuario.getPerfil() == "professor")
+                	{
                     loginValido = true;
                     session.setAttribute("usuario", usuario);
                     break;
+                	}
+                	
                 }
             }
         }
@@ -97,10 +102,10 @@ public class LoginServlet extends HttpServlet {
         if (loginValido) {
         	// Define a sessão do usuário
             //session.setAttribute("usuario", usuarioLogado);
-            response.sendRedirect("PrincipalAluno.jsp");
+            response.sendRedirect("PrincipalProfessor.jsp");
         } else {
-            request.setAttribute("mensagem", "Usuário ou senha inválido");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.setAttribute("mensagem", "Professor, usuário ou senha inválido");
+            request.getRequestDispatcher("loginProfessor.jsp").forward(request, response);
         }
 	}
 

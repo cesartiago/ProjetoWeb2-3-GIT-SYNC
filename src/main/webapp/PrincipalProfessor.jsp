@@ -1,40 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@ page import="model.*" %>
-
-<%@ page import="java.util.List" %>
-<%@ page import= "java.util.ArrayList"%>
-<%@ page import= "java.util.Iterator" %>
-
-<%@ page import= "javax.servlet.ServletContext" %>
-
- <%
- //MÓ SACANGEM, NEM AVISA QUE TEM QUE IMPORTAR arraylist haha.
-ServletContext servContext = ((ServletRequest) request).getServletContext();
-
- 
-List<ParticipadoProjeto> participacoes = (List<ParticipadoProjeto>) servContext.getAttribute("participacoes");
-List<ParticipadoProjeto> participacoes_desse_usuario = new ArrayList<>();
-
-Usuario usuario_atual = (Usuario) session.getAttribute("usuario");
-
-for (ParticipadoProjeto i : participacoes) { 
- if (i.getAluno() == usuario_atual.getId()) { 
-	 participacoes_desse_usuario.add(i);
-	 
-	}
-}
-
-
+ <%@ page import="model.Usuario" %>
+ <% 
 
 Usuario usuario = (Usuario) session.getAttribute("usuario");
 
- //Pra testes (roda):
-  //List<ParticipadoProjeto> participacoes = new ArrayList<>();
-  //participacoes.add(new ParticipadoProjeto(0, "NULA", 0, 1, false, true));
-%>
+ /*
+if (session.isNew()) {
+	 response.sendRedirect("a.jsp");
+}
+ */
 
+if (usuario == null) {
+    response.sendRedirect("index.jsp");
+} else {
+%>
+    <!-- aqui vai o conteúdo da página index.jsp caso o usuário não esteja logado -->
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,9 +40,9 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
 
         <!--MENU-->
         <div class="MENU">
-            <div class="item1_menu"><a href="PrincipalAluno.jsp">Enviar Participação em Projeto</a></div>
-            <div class="item2_menu"><a href="MeusRelatorios.jsp">Meus Relatórios</a></div>  
-            <div class="item3_menu"><a href="enviarcertificado.php">Enviar Certificado</a></div>
+            <div class="item1_menu"><a href="PrincipalAluno.jsp">Listar Participação em Projeto</a></div>
+            <div class="item2_menu"><a href="MeusRelatorios.jsp">Ver</a></div>  
+            <div class="item3_menu"><a href="enviarcertificado.php">Ver Certificado</a></div>
             <div class="item4_menu"></div>
             <div class="item5_menu"></div>
             <div class="item6_menu"></div> 
@@ -69,7 +52,7 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
         <div class="Formulario">
 
             <h1 class="title1">Projeto 1</h1>
-            <h1 class="title2">Meus relatório</h1>
+            <h1 class="title2">Enviar relatório</h1>
             <?php
                 if(isset($_SESSION['msg'])){
                     echo $_SESSION['msg'];
@@ -79,36 +62,14 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
 
             ?>
  
-                <table>
-				  <thead>
-				    <tr>
-				      <th>Nome</th>
-				      <th>ID</th>
-				      <th>Número do Projeto</th>
-				      <th>Aluno</th>
-				      <th>Homologado</th>
-				      <th>Ativo</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  
-					 <% if (participacoes != null) { 
-					 
-
-				     for (ParticipadoProjeto participacao : participacoes_desse_usuario) { %>
-				      <tr>
-				        <td><%= participacao.getNome() %></td>
-				        
-				      </tr>
-				    <% }
-				      %>
-				     
-				     <% } else { %>
- 					<p>Ainda não há participações registradas.</p>
-					<% } %>
-				  </tbody>
-				</table>
-             
+                <ol>
+				<li>Aluno 1</li>
+				<li>Aluno 2</li>
+				<li>Aluno 3</li>
+				<li>Aluno 4</li>
+				<li>Aluno 5</li>
+				</ol>
+				             
            
             <!--Logo-->
            
@@ -125,12 +86,17 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
                 <p id="titulo">Portal <br> Projeto de <br>Extensão</p>
             </div>
         </div>
-         <form action="LogoutServlet" method="post">
+        <form action="LogoutServlet" method="post">
     	<button style=" width: 80px; height: 40px;" href = "index.jsp" name="novoCadastro" type="submit">Logout</button>
     	<!-- BOTÃO NOVO DE LOGOUT -->
 	</form>
+        
     </div>
 
 </body>
 
 </html>
+
+<%
+}
+%>
