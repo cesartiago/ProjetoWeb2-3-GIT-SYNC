@@ -57,18 +57,18 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
 
         <!--MENU-->
         <div class="MENU">
-            <div class="item1_menu"><a href="PrincipalAluno.jsp">Enviar Participação em Projeto</a></div>
-            <div class="item2_menu"><a href="MeusRelatorios.jsp">Meus Relatórios</a></div>  
-            <div class="item3_menu"><a href="enviarcertificado.php">Enviar Certificado</a></div>
-            <div class="item4_menu"></div>
-            <div class="item5_menu"></div>
-            <div class="item6_menu"></div> 
+            <div class="item1_menu"><a href="PrincipalAluno.jsp">Registrar Participação</a></div>
+            <div class="item2_menu"><a href="MeusRelatorios.jsp">Meus Projetos e Participações</a></div>  
+            <div class="item3_menu"><a href="enviarcertificado.php"> Participações pendentes de aceitação </a></div>
+            <div class="item4_menu"><a href="enviarcertificado.php"> Enviar documentação de comprovação </a></div>
+            <div class="item5_menu"><a href="enviarcertificado.php"> Status da comprovação </a></div>
+            <div class="item6_menu"><a href="enviarcertificado.php"> Contato com a coordenação </a></div>
         </div>
 
         <!--Tela direita - Formularios...-->
         <div class="Formulario">
 
-            <h1 class="title1">Projeto 1</h1>
+            <h1 class="title1">Atividades Extensionistas</h1>
             <h1 class="title2">Meus relatório</h1>
             <?php
                 if(isset($_SESSION['msg'])){

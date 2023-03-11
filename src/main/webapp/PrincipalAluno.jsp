@@ -40,12 +40,12 @@ if (usuario == null) {
 
         <!--MENU-->
         <div class="MENU">
-            <div class="item1_menu"><a href="PrincipalAluno.jsp">Enviar Participação em Projeto</a></div>
-            <div class="item2_menu"><a href="MeusRelatorios.jsp">Meus Relatórios</a></div>  
-            <div class="item3_menu"><a href="enviarcertificado.php">Enviar Certificado</a></div>
-            <div class="item4_menu"></div>
-            <div class="item5_menu"></div>
-            <div class="item6_menu"></div> 
+            <div class="item1_menu"><a href="PrincipalAluno.jsp">Registrar Participação</a></div>
+            <div class="item2_menu"><a href="MeusRelatorios.jsp">Meus Projetos e Participações</a></div>  
+            <div class="item3_menu"><a href="enviarcertificado.php"> Participações pendentes de aceitação </a></div>
+            <div class="item4_menu"><a href="enviarcertificado.php"> Enviar documentação de comprovação </a></div>
+            <div class="item5_menu"><a href="enviarcertificado.php"> Status da comprovação </a></div>
+            <div class="item6_menu"><a href="enviarcertificado.php"> Contato com a coordenação </a></div>
         </div>
 
         <!--Tela direita - Formularios...-->
@@ -64,9 +64,32 @@ if (usuario == null) {
  
                 <form action="ProcessaRelatorioServlet" method="post" class="form2">
                 <div>
-			        <label for="nome">Nome:</label>
+			        <label for="nome">Nome do projeto:</label>
 			        <input type="text" id="nome" name="nome" required/>
 			   	</div>
+			   	
+			   	<div>
+			        <label for="numProcesso">Nº de processo:</label>
+			        <input type="text" id="nome" name="nome" required/>
+			   	</div>
+			   	
+			   	<div>
+			        <label for="dataInic">Data de ínicio:</label>
+			        <input type="date" id="nome" name="nome" required/>
+			   	</div>
+			   	
+			   	<div>
+			        <label for="numProcesso">Horas semestrais:</label>
+			        <input type="text" id="nome" name="nome" required/>
+			   	</div>
+			   	
+			   	<div>
+			        <label for="numProcesso">Atribuições:</label>
+			        <input type="textarea" id="nome" name="nome" required/>
+			   	</div>
+			   	
+			   	
+			   	<!--  ABAIXO  -->
 			    <div>
 			        <label for="id">id:</label>
 			        <input type="number" id="id" name="id" required />

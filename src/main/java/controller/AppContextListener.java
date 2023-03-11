@@ -77,7 +77,7 @@ public class AppContextListener implements ServletContextListener {
     	        List<ParticipadoProjeto> participacoes;
     	        participacoes = new ArrayList<ParticipadoProjeto>();
     	        System.out.println("parte da lista de projetos ok");
-    	        participacoes.add(new ParticipadoProjeto(0, "VEIO DO LIST-INITI", 0, 0, false, true));
+    	        participacoes.add(new ParticipadoProjeto(0, "Esse dado veio do Listener de Imício de contexto", 0, 0, false, true));
     	   
     	        
 

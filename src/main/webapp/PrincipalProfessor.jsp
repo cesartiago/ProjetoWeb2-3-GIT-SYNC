@@ -33,25 +33,25 @@ if (usuario == null) {
     <div class="container">   <!--Caixa inteira...-->
   
         <header class="header1">            
-            <h1 class="tituloheader">PERFIL <br> DO <br> ALUNO</h1>
+            <h1 class="tituloheader">PERFIL <br> DO <br> PROFESSOR </h1>
         </header>
 
-        <div class="icone"><img style="height: 80px; width: 80px; padding-top: 20px;" src="assets/iconaluno.png"></div> <!--AVATAR-->
+        <div class="icone"><img style="height: 80px; width: 80px; padding-top: 20px;" src="assets/iconprof.png"></div> <!--AVATAR-->
 
         <!--MENU-->
         <div class="MENU">
-            <div class="item1_menu"><a href="PrincipalAluno.jsp">Listar Participação em Projeto</a></div>
-            <div class="item2_menu"><a href="MeusRelatorios.jsp">Ver</a></div>  
-            <div class="item3_menu"><a href="enviarcertificado.php">Ver Certificado</a></div>
-            <div class="item4_menu"></div>
-            <div class="item5_menu"></div>
-            <div class="item6_menu"></div> 
+            <div class="item1_menu"><a href="PrincipalAluno.jsp">Listar Participações em Projeto</a></div>
+            <div class="item2_menu"><a href="MeusRelatorios.jsp"> Ver Alunos </a></div>  
+            <div class="item3_menu"><a href="enviarcertificado.php">Ver Participações Pendentes</a></div>
+            <div class="item4_menu"></div><a href="enviarcertificado.php">Ver Comprovações Pendentes</a></div>
+            <div class="item5_menu"></div><a href="enviarcertificado.php">Ver Certificado Pendentes</a></div>
+            <div class="item6_menu"></div> <a href="enviarcertificado.php">Ver Certificado Pendentes</a></div>
         </div>
 
         <!--Tela direita - Formularios...-->
         <div class="Formulario">
 
-            <h1 class="title1">Projeto 1</h1>
+            <h1 class="title1">Atividades Extensionistas</h1>
             <h1 class="title2">Enviar relatório</h1>
             <?php
                 if(isset($_SESSION['msg'])){
