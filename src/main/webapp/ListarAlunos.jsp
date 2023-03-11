@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
  <%@ page import="model.*" %>
+ <%@ page import="model.Usuario" %>
  
 
 
@@ -17,8 +18,8 @@
 ServletContext servContext = ((ServletRequest) request).getServletContext();
 
  
-List<ParticipadoProjeto> participacoes = (List<ParticipadoProjeto>) servContext.getAttribute("participacoes");
-for (ParticipadoProjeto i : participacoes) { 
+List<Usuario> usuarios = (List<Usuario>) servContext.getAttribute("usuarios");
+for (Usuario i : usuarios) { 
 	
 	/*pra printar nao usa System, em JSP usa "console" -: nao pegou!*/
 		// out.println("1");
@@ -70,7 +71,7 @@ if (usuario == null) {
         <!--MENU-->
         <div class="MENU">                      
             <div class="item1_menu"><a href="PrincipalProfessor.jsp">Listar Participações em Projeto</a></div>
-            <div class="item2_menu"><a href="ListarAlunos.jsp"> Ver Alunos </a></div>  
+            <div class="item2_menu"><a href="#"> Ver Alunos </a></div>  
             <div class="item3_menu"><a href="#">Ver Participações Pendentes</a></div>
             <div class="item4_menu"><a href="#">Ver Comprovações Pendentes</a></div>
             <div class="item5_menu"><a href="#">Ver Certificados Pendentes</a></div>
@@ -87,21 +88,21 @@ if (usuario == null) {
 				  <thead>
 				    <tr>
 				      <th>Nome</th>
-				      <th>ID</th>
-				      <th>Número do Projeto</th>
-				      <th>Aluno</th>
-				      <th>Homologado</th>
-				      <th>Ativo</th>
-				    </tr>
+				      <th>Matrícula</th>
+				      <th>E-mail</th>
+				  	</tr>
 				  </thead>
 				  <tbody>
 				  
-					 <% if (participacoes != null) { 
+					 <% if (usuarios != null) { 
 					 
 
-				     for (ParticipadoProjeto participacao : participacoes) { %>
+				     for (Usuario i : usuarios) { %>
 				      <tr>
-				        <td><%= participacao.getNome() %></td>
+				       
+				        <td><%= i.getNome() %></td>
+				        <td><%= i.getMatricula() %></td>
+				        <td><%= i.getEmail() %></td>
 				        
 				      </tr>
 				    <% }

@@ -11,6 +11,7 @@ if (session.isNew()) {
 	 response.sendRedirect("a.jsp");
 }
  */
+ 
 
 if (usuario != null) {
 	/*System.out em jsp não, em jsp, o mecanismo é o "out" solo mesmo. MAS O "OUT" NÃO TÁ IMPRIMINDO, PELO MENOS, EU NÃO VEJO 
@@ -19,7 +20,8 @@ if (usuario != null) {
 	*/
      	//out.println(" -  NO LOGINservlet tem =" + usuario.getNome()+ " senha= " + usuario.getSenha());
        	 getServletContext().log(" NO LOGINservlet tem =" + usuario.getNome()+ " senha= " + usuario.getSenha());//Estranho funcionar sem passar pra uma varíavel/objeto
-    response.sendRedirect("PrincipalAluno.jsp");
+       // ^^^ PRINTA COMO INFORMAÇÃO EM VERMLEHO NO CONSOLE!!!
+       	 response.sendRedirect("PrincipalAluno.jsp");
     
 } else {
 %>

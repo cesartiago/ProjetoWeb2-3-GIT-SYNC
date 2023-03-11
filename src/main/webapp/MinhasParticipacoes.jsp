@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
- <%@ page import="model.*" %>
- 
-
+<%@ page import="model.*" %>
 
 <%@ page import="java.util.List" %>
 <%@ page import= "java.util.ArrayList"%>
@@ -12,48 +10,38 @@
 <%@ page import= "javax.servlet.ServletContext" %>
 
  <%
- 
-//MÓ SACANGEM, NEM AVISA QUE TEM QUE IMPORTAR arraylist haha.
+ //MÓ SACANGEM, NEM AVISA QUE TEM QUE IMPORTAR arraylist haha.
 ServletContext servContext = ((ServletRequest) request).getServletContext();
 
  
 List<ParticipadoProjeto> participacoes = (List<ParticipadoProjeto>) servContext.getAttribute("participacoes");
+List<ParticipadoProjeto> participacoes_desse_usuario = new ArrayList<>();
+
+Usuario usuario_atual = (Usuario) session.getAttribute("usuario");
+
 for (ParticipadoProjeto i : participacoes) { 
-	
-	/*pra printar nao usa System, em JSP usa "console" -: nao pegou!*/
-		// out.println("1");
-	/*ou: getServletContext().log(" NO LOGINservlet tem =" + usuario.getNome()+)*/
-	
-	getServletContext().log("1"); //PRINTA COMO INFORMAÇÃO EM VERMLEHO NO CONSOLE!!!
+ if (i.getAluno() == usuario_atual.getId()) { 
+	 participacoes_desse_usuario.add(i);
+	 
 	}
+}
 
-
-
-
-
-
- //Pra testes (roda):
-  //List<ParticipadoProjeto> participacoes = new ArrayList<>();
-  //participacoes.add(new ParticipadoProjeto(0, "NULA", 0, 1, false, true));
 
 
 Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-
-
-if (usuario == null) {
-    response.sendRedirect("index.jsp");
-} else {
+ //Pra testes (roda):
+  //List<ParticipadoProjeto> participacoes = new ArrayList<>();
+  //participacoes.add(new ParticipadoProjeto(0, "NULA", 0, 1, false, true));
 %>
-    <!-- aqui vai o conteúdo da pagina index.jsp caso o usuario nao esteja logado -->
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificar relatórios</title>
+    <title>Minha participações</title>
     <link rel="stylesheet" href="assets/style_relatorios.css">
     <script language="javascript" type="text/javascript" src="validaaluno.js"></script>
 </head>
@@ -62,34 +50,38 @@ if (usuario == null) {
     <div class="container">   <!--Caixa inteira...-->
   
         <header class="header1">            
-            <h1 class="tituloheader">PERFIL <br> DO <br> Professor </h1>
+            <h1 class="tituloheader">PERFIL <br> DO <br> ALUNO</h1>
         </header>
 
-        <div class="icone"><img style="height: 80px; width: 80px; padding-top: 20px;" src="assets/iconprof.png"></div> <!--AVATAR-->
+        <div class="icone"><img style="height: 80px; width: 80px; padding-top: 20px;" src="assets/iconaluno.png"></div> <!--AVATAR-->
 
         <!--MENU-->
-        <div class="MENU">                      
-            <div class="item1_menu"><a href="PrincipalProfessor.jsp">Listar Participações em Projeto</a></div>
-            <div class="item2_menu"><a href="ListarAlunos.jsp"> Ver Alunos </a></div>  
-            <div class="item3_menu"><a href="#">Ver Participações Pendentes</a></div>
-            <div class="item4_menu"><a href="#">Ver Comprovações Pendentes</a></div>
-            <div class="item5_menu"><a href="#">Ver Certificados Pendentes</a></div>
-            <div class="item6_menu"> <a href="#">Outros</a></div>
+        <div class="MENU">
+            <div class="item1_menu"><a href="PrincipalAluno.jsp">Registrar Participação</a></div>
+            <div class="item2_menu"><a href="MinhasParticipacoes.jsp">Meus Projetos e Participações</a></div>  
+            <div class="item3_menu"><a href="enviarcertificado.php"> Participações pendentes de aceitação </a></div>
+            <div class="item4_menu"><a href="enviarcertificado.php"> Enviar documentação de comprovação </a></div>
+            <div class="item5_menu"><a href="enviarcertificado.php"> Status da comprovação </a></div>
+            <div class="item6_menu"><a href="enviarcertificado.php"> Contato com a coordenação </a></div>
         </div>
 
         <!--Tela direita - Formularios...-->
         <div class="Formulario">
 
-            <h1 class="title1">Gerenciamento</h1>
-            <h1 class="title2">Coodernação</h1>
-                           
-				<table>
+            <h1 class="title1">Atividades Extensionistas</h1>
+            <h1 class="title2">Minhas participações</h1>
+            
+ 
+                <table>
 				  <thead>
 				    <tr>
 				      <th>Nome</th>
-				      <th>ID</th>
-				      <th>Número do Projeto</th>
-				      <th>Aluno</th>
+				      <th>Nº do projeto</th>
+				      <!-- 
+				      <th>Nº de processo</th>
+				      <th>Data de ínicio</th>
+				      <th>Horas semestrais</th>
+				       -->
 				      <th>Homologado</th>
 				      <th>Ativo</th>
 				    </tr>
@@ -99,9 +91,14 @@ if (usuario == null) {
 					 <% if (participacoes != null) { 
 					 
 
-				     for (ParticipadoProjeto participacao : participacoes) { %>
+				     for (ParticipadoProjeto participacao : participacoes_desse_usuario) { %>
 				      <tr>
 				        <td><%= participacao.getNome() %></td>
+				        <td><%= participacao.getNumProjeto() %></td>
+				        <td><%= participacao.isHomologado() %></td>
+				        <td><%= participacao.isAtivo() %></td>
+				        
+				        
 				        
 				      </tr>
 				    <% }
@@ -112,7 +109,7 @@ if (usuario == null) {
 					<% } %>
 				  </tbody>
 				</table>
-				             
+             
            
             <!--Logo-->
            
@@ -129,17 +126,12 @@ if (usuario == null) {
                 <p id="titulo">Portal <br> Projeto de <br>Extensão</p>
             </div>
         </div>
-        <form action="LogoutServlet" method="post">
+         <form action="LogoutServlet" method="post">
     	<button style=" width: 80px; height: 40px;" href = "index.jsp" name="novoCadastro" type="submit">Logout</button>
-    	<!-- BOTAO NOVO DE LOGOUT -->
+    	<!-- BOTÃO NOVO DE LOGOUT -->
 	</form>
-        
     </div>
 
 </body>
 
 </html>
-
-<%
-}
-%>
