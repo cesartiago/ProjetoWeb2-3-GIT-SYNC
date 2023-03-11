@@ -6,15 +6,20 @@
 <%@ page import="java.util.List" %>
 <%@ page import= "java.util.ArrayList"%>
 <%@ page import= "java.util.Iterator" %>
+
+<%@ page import= "javax.servlet.ServletContext" %>
+
     
  <%
  //MÓ SACANGEM, NEM AVISA QUE TEM QUE IMPORTAR arraylist haha.
+ServletContext servContext = ((ServletRequest) request).getServletContext();
  
-/*List<ParticipadoProjeto> participacoes = (List<ParticipadoProjeto>) request.getAttribute("participacoes");*/
+List<ParticipadoProjeto> participacoes = (List<ParticipadoProjeto>) servContext.getAttribute("participacoes");
+
 
  //Pra testes (roda):
-  List<ParticipadoProjeto> participacoes = new ArrayList<>();
-  participacoes.add(new ParticipadoProjeto(0, "NULA", 0, 1, false, true));
+  //List<ParticipadoProjeto> participacoes = new ArrayList<>();
+  //participacoes.add(new ParticipadoProjeto(0, "NULA", 0, 1, false, true));
 %>
 
 <!DOCTYPE html>
