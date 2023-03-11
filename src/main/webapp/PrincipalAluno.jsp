@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+ <%@ page import="model.Usuario" %>
+ <% 
+
+Usuario usuario = (Usuario) session.getAttribute("usuario");
+
+ /*
+if (session.isNew()) {
+	 response.sendRedirect("a.jsp");
+}
+ */
+
+if (usuario == null) {
+    response.sendRedirect("index.jsp");
+} else {
+%>
+    <!-- aqui vai o conteúdo da página index.jsp caso o usuário não esteja logado -->
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,9 +107,16 @@
                 <p id="titulo">Portal <br> Projeto de <br>Extensão</p>
             </div>
         </div>
+        <form action="LogoutServlet" method="post">
+    	<button style=" width: 80px; height: 40px;" href = "index.jsp" name="novoCadastro" type="submit">Logout</button>
+	</form>
         
     </div>
 
 </body>
 
 </html>
+
+<%
+}
+%>

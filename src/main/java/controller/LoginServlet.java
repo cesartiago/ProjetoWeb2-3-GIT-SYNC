@@ -95,7 +95,7 @@ public class LoginServlet extends HttpServlet {
 
         if (loginValido) {
         	// Define a sessão do usuário
-            session.setAttribute("usuario", usuarioLogado);
+            //session.setAttribute("usuario", usuarioLogado);
             response.sendRedirect("PrincipalAluno.jsp");
         } else {
             request.setAttribute("mensagem", "Usuário ou senha inválido");

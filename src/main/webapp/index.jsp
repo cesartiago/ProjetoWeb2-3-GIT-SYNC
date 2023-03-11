@@ -1,16 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%
+ <%@ page import="model.Usuario" %>
+ <% 
 
-String usuario = (String) session.getAttribute("usuario");
+Usuario usuario = (Usuario) session.getAttribute("usuario");
 
+ /*
 if (session.isNew()) {
 	 response.sendRedirect("a.jsp");
 }
+ */
 
 if (usuario != null) {
+	/*System.out em jsp não, em jsp, o mecanismo é o "out" solo mesmo. MAS O "OUT" NÃO TÁ IMPRIMINDO, PELO MENOS, EU NÃO VEJO 
+	pode ser q seja em outro lugar sem se o Eclipse e o navegador.
+	ENTÃO USE = getServletContext().log("mensagem");
+	*/
+     	//out.println(" -  NO LOGINservlet tem =" + usuario.getNome()+ " senha= " + usuario.getSenha());
+       	 getServletContext().log(" NO LOGINservlet tem =" + usuario.getNome()+ " senha= " + usuario.getSenha());//Estranho funcionar sem passar pra uma varíavel/objeto
     response.sendRedirect("PrincipalAluno.jsp");
+    
 } else {
 %>
     <!-- aqui vai o conteúdo da página index.jsp caso o usuário não esteja logado -->

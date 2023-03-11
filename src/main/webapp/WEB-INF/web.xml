@@ -7,6 +7,9 @@
   <listener>
   	<listener-class>controller.AppContextListener</listener-class>
   </listener>
+  <listener>
+  	<listener-class>controller.Sessao</listener-class>
+  </listener>
   <servlet>
   	<servlet-name>CadastrarUsuarioServelet</servlet-name>
   	<display-name>CadastrarUsuarioServelet</display-name>
@@ -43,6 +46,12 @@
   	<description></description>
   	<servlet-class>controller.ListarMeusRelatorios</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<display-name>LogoutServlet</display-name>
+  	<description></description>
+  	<servlet-class>controller.LogoutServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>CadastrarUsuarioServelet</servlet-name>
   	<url-pattern>/CadastrarUsuarioServelet</url-pattern>
@@ -66,6 +75,10 @@
   <servlet-mapping>
   	<servlet-name>ListarMeusRelatorios</servlet-name>
   	<url-pattern>/ListarMeusRelatorios</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
   
     <welcome-file-list>
